@@ -6,6 +6,7 @@ body {
     background: plum;
     color: black;
     font-family: Consolas,monaco,monospace;
+    margin: 0;
 }
 .container {
     display: grid;
