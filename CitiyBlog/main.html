@@ -4,13 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
     <link rel="stylesheet" href="./main.css">
-    <script src="./main.js"></script>
 </head>
 
 <body>
-    <div class="header-nav">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+        const app = document.getElementById('app');
+        var icons_to_show = ["girl-frontline","word","excel","bulshit"]
+        
+        function Header() {
+            return (<a href="">about me</a>
+                    <a href="">games</a>
+                    <a href="">blogg</a><h1>Develop in react brother <b>plelelele</b> <button> cola</button></h1>);
+        }
+        function HomePage() {
+            return <div> <Header /></div>
+        }
+        function Icon() {
+            return (<a href="">
+                    <img src="https://i.pinimg.com/736x/08/68/f9/0868f96271fd81b7d86674085391db25.jpg" alt="">
+                    <span>Girls Frontline</span>
+                </a>)
+        }
+
+        function PseudoDesktop() {
+            for name in icons_to_show:
+                <Icon text= name resource_link= resource/>
+        }
+        const root = ReactDOM.createRoot(app);
+            // Capitalize the React Component
+        root.render(<HomePage />);
+    </script>
+    <div class="header-nav" id="app">
         <a href="">about me</a>
         <a href="">games</a>
         <a href="">blogg</a>
@@ -38,6 +69,14 @@
             <a href="">Super linux</a>
         </div>
     </div>
+    <button onclick="do_stuff()">
+
+    </button>
+    <script>
+        function do_stuff() {
+            console.log("Hello")
+        }
+    </script>
 </body>
 
 </html>
