@@ -1,42 +1,88 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+.header-nav {
+    overflow: hidden;
+    margin: 5px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header-nav a {
+    float: left;
+    display: block;
+    color: rgb(203, 148, 255);
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-nav a:hover {
+    background-color: violet;
+    color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.header-nav h1 {
+    float: right;
+    color: rgb(203, 148, 255);
+}
+.header-nav h1:hover {
+    background-image: url(https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Python/Aoba_Suzukaze_techgo_Python_For_Beginners.png?raw=true);
+    background-size: 100% 100%;
 }
 
-.card {
-  padding: 2em;
+.column-main {
+    float: left;
+    width: 20%;
+    padding: 15px;
+}
+.column-sub {
+    float: right;
+    width: 40%;
+    padding: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+body {
+    background-image: url(https://wallpaperaccess.com/full/2315286.jpg);
+    background-color: #0be067b6;
+    background-size: cover;
+    text-align: center;
+    margin: 0%;
+}
+
+.desktop-app-launcher {
+    float: left;
+}
+.desktop-app-launcher a{
+    color: black;
+    text-decoration: none;
+    border-style: ridge;
+    padding: 5px;
+}
+
+.desktop-app-launcher a:hover{
+    background-color: #818181;
+}
+
+.desktop-icon img{
+    height: 48px;
+    width: 48px; 
+}
+.desktop-icon span {
+    display: block;
+    color: white;
+    font-size: 11px;
+    text-align: center;
+}
+.desktop-icon button {
+    border: transparent;
+    background-color: transparent;
+}
+.pseudo-taskbar {
+    bottom: 0;
+    padding: 15px;
+    background-color: #c3c3c3;
+    position: fixed;
+    width: 100%;
 }
