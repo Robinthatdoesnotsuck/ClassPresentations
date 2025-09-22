@@ -1,22 +1,18 @@
 import React from "react";
 import DesktopIcon from "../Components/Icons";
 import NavigationBar from "../Components/Navbar"
-import TaskBar from "../Components/TaskBar";
+import TaskBar from "../Components/TaskBar/TaskBar";
 
 
 let icons = [
   {
-    title: "haro",
+    title: "Career",
     img_src: "https://i.pinimg.com/736x/08/68/f9/0868f96271fd81b7d86674085391db25.jpg",
   },
   {
-    title: "boci",
+    title: "Experience",
     img_src: "https://i.pinimg.com/1200x/05/2e/bd/052ebd7e9dcb06080b7cda54c06c1a9c.jpg",
   },
-  {
-    title: "y",
-    img_src: "y",
-  }
 ];
 
 function HomePage() {
@@ -45,7 +41,6 @@ function HomePage() {
             <NavigationBar />
             <div className="row">
                 <div className="column-main">
-                    <button onClick={handleClick}>number: {number}</button>
                     <div id="icons">{full_icons}</div>
                 </div>
             </div>

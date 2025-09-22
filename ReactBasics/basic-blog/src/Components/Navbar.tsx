@@ -1,12 +1,12 @@
+import { Link } from 'react-router'
 import '../App.css'
 function NavigationBar() {
     return (
             <>
                 <div className="header-nav">
-                    <a href="">about me</a>
-                    <a href="">games</a>
-                    <a href="">blogg</a>
-
+                    <Link to = "/">About me</Link>
+                    <Link to = "/blog">Blogg</Link>
+                    <Link to = "/games">Games</Link>
                     <h1>Super duper fun blogg</h1>
                 </div>
             </>)

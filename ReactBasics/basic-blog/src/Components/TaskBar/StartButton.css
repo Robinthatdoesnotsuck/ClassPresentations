@@ -1,0 +1,21 @@
+.desktop-app-launcher button {
+  border: 3px outset black;
+  padding: 0.3em 1.2em;
+  margin: 0.3em 1.2em 0 0;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #c3c3c3;
+  cursor: pointer;
+}
+
+.desktop-app-launcher button:hover {
+  border: 3px inset black;
+  background-color: #acacac;
+}
+.desktop-app-launcher button img {
+    height: 26px;
+    width: 26px;
+    padding: 0%;
+    margin: 0%;
+}
