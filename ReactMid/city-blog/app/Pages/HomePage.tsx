@@ -17,19 +17,6 @@ let icons = [
 
 function HomePage() {
     let full_icons: any = [];
-    const [number, setNumber] = React.useState(0);
-    const [colorMode, setColorMode] = React.useState(false)
-
-    async function handleClick() {
-        console.log('Increment button');
-        setNumber(number + 3);
-        const response = await fetch('http://localhost:8080', {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-          },
-        });
-    }
 
     icons.forEach((icon: { title: string; img_src: string }, _index: any) => {
         full_icons.push(

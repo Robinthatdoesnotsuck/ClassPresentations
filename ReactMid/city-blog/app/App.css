@@ -1,0 +1,80 @@
+
+.header-nav {
+    overflow: hidden;
+    margin: 5px;
+}
+
+.header-nav a {
+    float: left;
+    display: block;
+    color: rgb(203, 148, 255);
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.header-nav a:hover {
+    background-color: violet;
+    color: black;
+}
+
+.header-nav h1 {
+    float: right;
+    color: rgb(203, 148, 255);
+}
+
+.column-main {
+    float: left;
+    width: 20%;
+    padding: 15px;
+}
+.column-sub {
+    float: right;
+    width: 40%;
+    padding: 15px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+body {
+    background-image: url(https://wallpaperaccess.com/full/2315286.jpg);
+    background-color: #0be067b6;
+    background-size: cover;
+    text-align: center;
+    margin: 0%;
+}
+
+.desktop-app-launcher {
+    float: left;
+}
+
+.desktop-icon {
+    position: relative;
+    top: 650px;
+    float: left;
+}
+.desktop-icon img{
+    height: 48px;
+    width: 48px; 
+}
+.desktop-icon span {
+    display: block;
+    color: white;
+    font-size: 11px;
+    text-align: center;
+}
+.desktop-icon button {
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+.pseudo-taskbar {
+    bottom: 0;
+    padding: 15px;
+    background-color: #c3c3c3;
+    position: fixed;
+    width: 100%;
+}

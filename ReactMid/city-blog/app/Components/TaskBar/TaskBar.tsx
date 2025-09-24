@@ -1,9 +1,10 @@
+"use client";
 import './StartButton.css'
 import { useState } from 'react'
 import StartButton from './StartButton';
 import Menu from './Menu';
 
-function TaskBar() {cle
+function TaskBar() {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
