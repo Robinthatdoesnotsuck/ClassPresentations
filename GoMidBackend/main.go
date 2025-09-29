@@ -62,6 +62,7 @@ func getComments(c *gin.Context) {
 func main() {
 	router := gin.Default()
 	router.GET("/users", getUsers)
-	router.GET("/users", getPosts)
-	router.GET("/users", getComments)
+	router.GET("/posts", getPosts)
+	router.GET("/comments", getComments)
+	router.Run("localhost:8081")
 }
