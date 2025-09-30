@@ -2,6 +2,8 @@ import React from "react";
 import DesktopIcon from "../Components/Icons";
 import NavigationBar from "../Components/Navbar"
 import TaskBar from "../Components/TaskBar/TaskBar";
+import UserListBox from "../Components/UsersList";
+import { getUsers, User } from "@/utils/api-manager";
 
 
 let icons = [
@@ -15,8 +17,13 @@ let icons = [
   },
 ];
 
-function HomePage() {
+function UsersSetup(): Promise<User[]> {
+  return  getUsers()
+}
+
+async function HomePage() {
     let full_icons: any = [];
+    const current_users: User[] = await UsersSetup()
 
     icons.forEach((icon: { title: string; img_src: string }, _index: any) => {
         full_icons.push(
@@ -31,6 +38,7 @@ function HomePage() {
                     <div id="icons">{full_icons}</div>
                 </div>
             </div>
+            <UserListBox users_to_list = {current_users}></UserListBox>
             <TaskBar></TaskBar>
         </>
     )
