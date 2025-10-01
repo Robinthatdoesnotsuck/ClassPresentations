@@ -23,5 +23,5 @@ CREATE TABLE post_comments (
     reply BOOLEAN ,
     parent INT,
     CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
-    CONSTRAINT fk_user FOREIGN KEY(post_id) REFERENCES posts(id)
+    CONSTRAINT fk_post_id FOREIGN KEY(post_id) REFERENCES posts(id)
 )
