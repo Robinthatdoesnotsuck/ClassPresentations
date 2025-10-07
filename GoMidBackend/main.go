@@ -7,16 +7,22 @@ import (
 )
 
 type User struct {
-	ID       string `json:"id"`
+	ID       int    `json:"id"`
+	UserName string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+}
+
+type UserRequest struct {
 	UserName string `json:"username"`
 	Password string `json:"password"`
 	Email    string `json:"email"`
 }
 
 var test_users = []User{
-	{ID: "1", UserName: "me", Password: "secure", Email: "something@something"},
-	{ID: "2", UserName: "not me", Password: "secure", Email: "something@something"},
-	{ID: "3", UserName: "also me", Password: "secure", Email: "something@something"},
+	{ID: 1, UserName: "me", Password: "secure", Email: "something@something"},
+	{ID: 2, UserName: "not me", Password: "secure", Email: "something@something"},
+	{ID: 3, UserName: "also me", Password: "secure", Email: "something@something"},
 }
 
 type Post struct {
@@ -51,6 +57,25 @@ func getUsers(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, test_users)
 }
 
+func insertUser(c *gin.Context) {
+	var new_user UserRequest
+	if err := c.ShouldBindJSON(&new_user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON"})
+		return
+	}
+	var added_user User
+	added_user.ID = len(test_users) + 1
+	added_user.Email = new_user.Email
+	added_user.Password = new_user.Password
+	added_user.UserName = new_user.UserName
+	test_users = append(test_users, added_user)
+	c.JSON(http.StatusCreated, new_user)
+}
+
+func loginUser(c *gin.Context) {
+	var login_user LoginUserRequest
+}
+
 func getPosts(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, test_posts)
 }
@@ -62,6 +87,7 @@ func getComments(c *gin.Context) {
 func main() {
 	router := gin.Default()
 	router.GET("/users", getUsers)
+	router.POST("/users", insertUser)
 	router.GET("/posts", getPosts)
 	router.GET("/comments", getComments)
 	router.Run("localhost:8081")
