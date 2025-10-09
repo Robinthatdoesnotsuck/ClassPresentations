@@ -72,10 +72,6 @@ func insertUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, new_user)
 }
 
-func loginUser(c *gin.Context) {
-	var login_user LoginUserRequest
-}
-
 func getPosts(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, test_posts)
 }
