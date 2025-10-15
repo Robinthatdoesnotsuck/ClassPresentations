@@ -1,4 +1,4 @@
-package handler
+package http_handler
 
 import (
 	"net/http"
@@ -7,23 +7,43 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type User struct {
+	UserName string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+}
+
 type handler struct {
 	db_manager *repository.DBManager
 }
 
-func (h *handler) getUsers(c *gin.Context) {
-	all_users := *h.db_manager.orm
-	c.IndentedJSON(http.StatusOK, test_users)
+func New(db *repository.DBManager) *handler {
+
+	return &handler{db_manager: db}
+}
+func (h *handler) GetUsers(c *gin.Context) {
+	all_users, err := h.db_manager.GetAllUsers()
+	c.IndentedJSON(http.StatusOK, all_users)
 }
 
-func (h *handler) insertUser(c *gin.Context) {
-
-	c.JSON(http.StatusCreated, new_user)
+func (h *handler) InsertUser(c *gin.Context) {
+	var new_user User
+	if err := c.ShouldBindJSON(&new_user); err != nil {
+		// If binding fails, it's usually a Bad Request
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	err := h.db_manager.InsertNewUser(new_user.UserName, new_user.Password, new_user.Email)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, "user inserted")
 }
-func (h *handler) getPosts(c *gin.Context) {
+func (h *handler) GetPosts(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK)
 }
 
-func (h *handler) getComments(c *gin.Context) {
+func (h *handler) GetComments(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, test_comments)
 }

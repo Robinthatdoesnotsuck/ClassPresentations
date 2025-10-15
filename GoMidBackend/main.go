@@ -1,8 +1,11 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
+	http_handler "github.com/Robinthatdoesnotsuck/ClassPresentations/city_blog/http"
+	"github.com/Robinthatdoesnotsuck/ClassPresentations/city_blog/repository"
 	"github.com/gin-gonic/gin"
 )
 
@@ -53,8 +56,15 @@ var test_comments = []Comment{
 	{ID: "3", UserID: "3", PostID: "3", CommentText: "This is shit", Reply: false},
 }
 
-func getUsers(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, test_users)
+func getUsers(db *repository.DBManager) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		users, err := db.GetAllUsers()
+		if err != nil {
+			log.Fatalln(err)
+		}
+		c.IndentedJSON(http.StatusOK, users)
+	}
+
 }
 
 func insertUser(c *gin.Context) {
@@ -81,9 +91,12 @@ func getComments(c *gin.Context) {
 }
 
 func main() {
+	dsn := "postgres://postgres:super_secret@localhost:5432"
+	db := repository.New(dsn)
+	hdlr := http_handler.New(db)
 	router := gin.Default()
-	router.GET("/users", getUsers)
-	router.POST("/users", insertUser)
+	router.GET("/users", hdlr.GetUsers)
+	router.POST("/users", hdlr.InsertUser)
 	router.GET("/posts", getPosts)
 	router.GET("/comments", getComments)
 	router.Run("localhost:8081")
