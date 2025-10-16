@@ -1,9 +1,9 @@
-package http_handler
+package httphandler
 
 import (
 	"net/http"
 
-	"github.com/Robinthatdoesnotsuck/ClassPresentations/city_blog/repository"
+	"github.com/Robinthatdoesnotsuck/ClassPresentations/advanced_city_blog/repository"
 	"github.com/gin-gonic/gin"
 )
 
