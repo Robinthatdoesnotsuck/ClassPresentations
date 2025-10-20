@@ -1,6 +1,8 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+)
 
 type User struct {
 	gorm.Model
@@ -8,4 +10,5 @@ type User struct {
 	Password  string
 	Email     string
 	LastLogin string
+	Posts     []Post
 }

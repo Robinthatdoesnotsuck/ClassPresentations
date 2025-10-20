@@ -20,3 +20,13 @@ execute-sql-dummy-data:
 
 access-postgres-container:
 	docker exec -it city_blog psql -U postgres -d postgres
+
+init-postgres-only-db-to-terminal-container:
+	docker run --name city_blog \
+		-p 5432:5432 \
+		-e POSTGRES_PASSWORD=super_secret \
+		-v ./InitDB.sql:/docker-entrypoint-initdb.d/InitDB.sql \
+		postgres:latest
+
+execute-db:
+	docker exec -i city_blog psql -U postgres -d city_blog < ./InitDB.sql

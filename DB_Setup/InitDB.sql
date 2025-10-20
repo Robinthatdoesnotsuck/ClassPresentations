@@ -1,0 +1,1 @@
+CREATE DATABASE city_blog

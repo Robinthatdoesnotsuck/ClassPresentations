@@ -12,7 +12,9 @@ type User struct {
 	Password string `json:"password"`
 	Email    string `json:"email"`
 }
-
+type GetUserRequest struct {
+	UserID uint `json:"user_id"`
+}
 type handler struct {
 	db_manager *repository.DBManager
 }
@@ -27,6 +29,19 @@ func (h *handler) GetUsers(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	}
 	c.IndentedJSON(http.StatusOK, all_users)
+}
+
+func (h *handler) GetUserByID(c *gin.Context) {
+	var get_user_request GetUserRequest
+	if err := c.ShouldBindJSON(&get_user_request); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Error": err.Error()})
+	}
+	user, err := h.db_manager.GetUserByID(get_user_request.UserID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, user)
 }
 
 func (h *handler) InsertUser(c *gin.Context) {
