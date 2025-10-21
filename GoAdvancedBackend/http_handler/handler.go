@@ -15,6 +15,7 @@ type User struct {
 type GetUserRequest struct {
 	UserID uint `json:"user_id"`
 }
+
 type handler struct {
 	db_manager *repository.DBManager
 }
