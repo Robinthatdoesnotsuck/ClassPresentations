@@ -21,6 +21,38 @@
         Classes
         <img src="/home/dannypop/Firefox_wallpaper.png" width="120px" height="120px">
     </button>
+
+    <form id="userForm">
+        <input type="text" id="name" placeholder="Enter Name faculty/student">
+        <input type="text" id="type" placeholder="Enter Type">
+        <button >Send to server or API IDK</button>
+    </form>
+
+    <script>
+        async function processForm() {
+    const requestBody = {
+        name: document.getElementById('name').value,
+        type: document.getElementById('type').value
+    };
+    console.log(requestBody);
+}
+
+        document.getElementById('userForm').addEventListener('submit', async(e) => {
+            e.preventDefault();
+            const requestBody = {
+                name: document.getElementById('name').value,
+                type: document.getElementById('type').value
+            };
+            console.log(requestBody);
+
+            const response = await fetch('/process', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json'},
+                body: JSON.stringify(requestBody)
+            });
+            const result = await response.json()
+        });
+    </script>
 </body>
 
 </html>
