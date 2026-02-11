@@ -9,16 +9,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-
-@app.route("/users")
-def hello_users():
-    return "<p>Hello, World!</p>"
-
 @app.route("/process", methods = ["POST"])
 def process_data():
     data = request.get_json()
@@ -32,7 +22,5 @@ def process_data():
         "status": "ok",
         "message": f"I've saved the user:{name}"
     }
-
+    print(response)
     return jsonify(response), 200
-
-" Recibo cosas, proceso cosas, guardo cosas y o regreso cosas"

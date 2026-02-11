@@ -30,7 +30,7 @@ async function getUsers() {
 async function createUsers(userData) {
     // post Update Delete
     try {
-        const response = await fetch('localhost:6666/', {
+        const response = await fetch('localhost:5000/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,3 +43,22 @@ async function createUsers(userData) {
 
     }
 }
+
+async function processForm(e) {
+    e.preventDefault();
+    const requestBody = {
+        name: document.getElementById('name').value,
+        type: document.getElementById('type').value
+    };
+    console.log(requestBody);
+
+    const response = await fetch('http://localhost:5000/process', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json'},
+        body: JSON.stringify(requestBody)
+    });
+    const result = await response.json();
+    console.log(result);
+}
+
+document.getElementById('userForm').addEventListener('submit', processForm);
