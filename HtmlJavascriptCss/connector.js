@@ -54,11 +54,19 @@ async function processForm(e) {
 
     const response = await fetch('http://localhost:5000/process', {
         method: 'POST',
-        headers: { 'Content-type': 'application/json'},
+        headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(requestBody)
     });
     const result = await response.json();
     console.log(result);
 }
 
+const sidebar = document.getElementById('sidebar');
+const toggleSidebarButton = document.getElementById('toggle-sidebar');
+
+function toggleSidebar(e) {
+
+}
+
 document.getElementById('userForm').addEventListener('submit', processForm);
+toggleSidebarButton.addEventListener('click', toggleSidebar);
