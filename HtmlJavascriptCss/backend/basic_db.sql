@@ -8,12 +8,6 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert some data
-INSERT INTO users (username, email) VALUES 
-    ('alice', 'alice@example.com'),
-    ('bob', 'bob@example.com'),
-    ('charlie', 'charlie@example.com');
-
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
@@ -21,8 +15,11 @@ CREATE TABLE posts (
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+-- Insert some data
 INSERT INTO users (username, email) VALUES 
     ('alice', 'alice@example.com'),
     ('bob', 'bob@example.com'),
     ('charlie', 'charlie@example.com');
+INSERT INTO posts (user_id, title, content) VALUES 
+    (1, 'First Post', 'Hello from Alice!'),
+    (2, 'Bob''s Thoughts', 'PostgreSQL is great!');
