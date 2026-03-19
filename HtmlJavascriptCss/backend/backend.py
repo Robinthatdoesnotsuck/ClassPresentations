@@ -40,5 +40,3 @@ def process_data():
     }
     print(response)
     return jsonify(response), 200
-
-CRUD
